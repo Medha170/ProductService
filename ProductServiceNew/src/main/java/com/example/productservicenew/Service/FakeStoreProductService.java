@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service("fakeStoreProductService")
 public class FakeStoreProductService implements  ProductService{
     private Product convertToProduct(FakeStoreProductDTO fakeStoreProductDTO){
         Product product=new Product();
@@ -21,7 +21,7 @@ public class FakeStoreProductService implements  ProductService{
         product.setImageUrl(fakeStoreProductDTO.getImageUrl());
         product.setCategory(new Category());
         Category category = new Category();
-        category.setDescription(fakeStoreProductDTO.getCategory());
+        //category.setDescription(fakeStoreProductDTO.getCategory());
         product.setCategory(category);
 
         return product;
@@ -50,5 +50,10 @@ public class FakeStoreProductService implements  ProductService{
             list.add(convertToProduct(fakeStoreProductDTO));
         }
         return list;
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
     }
 }
